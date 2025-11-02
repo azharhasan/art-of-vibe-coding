@@ -1,0 +1,226 @@
+.waitlistCard {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.5),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  max-width: 550px;
+  margin: 0 auto 3rem;
+  border: 3px solid rgba(255, 159, 64, 0.3);
+  animation: fadeInUp 1s ease-out 0.3s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.waitlistCard::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cardDescription {
+  color: #555;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.waitlistForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: 700;
+  color: #ff6b35;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.formGroup input {
+  padding: 1rem 1.25rem;
+  border: 3px solid #ffe6cc;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  outline: none;
+  background: #fffbf5;
+}
+
+.formGroup input:focus {
+  border-color: #ff9f40;
+  box-shadow: 0 0 0 4px rgba(255, 159, 64, 0.15);
+  background: white;
+  transform: translateY(-2px);
+}
+
+.inputError {
+  border-color: #ef4444;
+  background: #fff5f5;
+}
+
+.errorText {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: -0.25rem;
+  font-weight: 600;
+}
+
+.submitButton {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: white;
+  border: none;
+  padding: 1.25rem;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.submitButton:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.submitButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
+}
+
+.submitButton:active {
+  transform: translateY(-1px);
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+  border-radius: 16px;
+  color: #166534;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+  animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.successIcon {
+  width: 4rem;
+  height: 4rem;
+  color: #15803d;
+  filter: drop-shadow(0 4px 8px rgba(21, 128, 61, 0.3));
+  animation: checkmark 0.8s ease-in-out;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+.successMessage p {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #15803d;
+}
+
+@media (max-width: 768px) {
+  .waitlistCard {
+    padding: 2rem;
+    margin: 0 1rem 2rem;
+  }
+
+  .cardTitle {
+    font-size: 2rem;
+  }
+}
